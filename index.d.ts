@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,17 +16,32 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { typedndarray, complex64ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Calculate the k-th discrete forward difference of a one-dimensional single-precision complex floating-point ndarray.
+* Calculates the k-th discrete forward difference of a one-dimensional single-precision complex floating-point ndarray.
 *
-* @module @stdlib/blas-ext-base-ndarray-cdiff
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a one-dimensional ndarray containing values to prepend.
+*     -   a one-dimensional ndarray containing values to append.
+*     -   a one-dimensional output ndarray.
+*     -   a one-dimensional workspace ndarray.
+*     -   a zero-dimensional ndarray specifying the number of times to recursively compute differences.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Complex64Vector = require( '@stdlib/ndarray-vector-complex64' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var cdiff = require( '@stdlib/blas-ext-base-ndarray-cdiff' );
 *
 * var x = new Complex64Vector( [ 2.0, -2.0, 4.0, -4.0 ] );
 * var prepend = new Complex64Vector( [ 1.0, -1.0 ] );
@@ -40,12 +55,9 @@
 * var y = cdiff( [ x, prepend, append, out, workspace, k ] );
 * // returns <ndarray>[ <Complex64>[ 1.0, -1.0 ], <Complex64>[ 2.0, -2.0 ], <Complex64>[ 3.0, -3.0 ] ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function cdiff( arrays: [ complex64ndarray, complex64ndarray, complex64ndarray, complex64ndarray, complex64ndarray, typedndarray<number> ] ): complex64ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = cdiff;
